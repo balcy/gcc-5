@@ -1,2 +1,0 @@
-gcc-@BV@-hppa64-linux-gnu binary: binary-from-other-architecture
-gcc-@BV@-hppa64-linux-gnu binary: binary-without-manpage
