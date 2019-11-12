@@ -2053,4 +2053,3 @@ _shlibdirs = \
 	  $(CURDIR)/$(d)/$(usr_lib$(2)) \
 	  $(CURDIR)/$(d)/usr/$(call mlib_to_march,$(2))/lib)
 shlibdirs_to_search = -l$(subst $(SPACE),:,$(foreach d,$(_shlibdirs),$(d)))
-

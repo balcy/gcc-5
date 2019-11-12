@@ -2903,4 +2903,3 @@ Depends: make, autoconf2.64, quilt, patchutils, gawk, ${misc:Depends}
 Description: Source of the GNU Compiler Collection
  This package contains the sources and patches which are needed to
  build the GNU Compiler Collection (GCC).
-

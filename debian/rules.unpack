@@ -242,4 +242,3 @@ ifeq ($(GFDL_INVARIANT_FREE),yes-now-purge-gfdl)
 endif
 	echo "$(gdc_tarball) unpacked." > $@
 endif
-
