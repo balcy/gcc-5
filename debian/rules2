@@ -203,6 +203,11 @@ CONFARGS += \
 	--enable-languages=$(subst $(SPACE),$(COMMA),$(enabled_languages)) \
 	--prefix=/$(PF)
 
+# !! PROTOTYPE BUILD !!
+CONFARGS += \
+	--disable-libgomp
+# !! end of prototype build
+
 ifeq ($(versioned_packages),yes)
   CONFARGS += --program-suffix=-$(BASE_VERSION)
 endif
