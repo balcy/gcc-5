@@ -1072,6 +1072,9 @@ endif
 MULTIARCH_DIRNAME := $(DEB_TARGET_MULTIARCH)
 export MULTIARCH_DIRNAME
 
+# no parallel build
+export DEB_BUILD_OPTIONS="parallel=1"
+
 default: build
 
 configure: $(configure_dependencies)
