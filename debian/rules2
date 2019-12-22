@@ -204,8 +204,8 @@ CONFARGS += \
 	--prefix=/$(PF)
 
 # !! PROTOTYPE BUILD !!
-CONFARGS += \
-	--disable-libgomp
+#CONFARGS += \
+#	--disable-libgomp
 # !! end of prototype build
 
 ifeq ($(versioned_packages),yes)
