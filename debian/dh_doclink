@@ -1,13 +1,12 @@
 #! /bin/sh
 
-echo "INFO: dh_doclink is deactivated !"
-#pkg=`echo $1 | sed 's/^-p//'`
-#target=$2
+pkg=`echo $1 | sed 's/^-p//'`
+target=$2
 
-#[ -d debian/$pkg/usr/share/doc ] || mkdir -p debian/$pkg/usr/share/doc
-#if [ -d debian/$pkg/usr/share/doc/$p -a ! -h debian/$pkg/usr/share/doc/$p ]
-#then
-#    echo "WARNING: removing doc directory  $pkg"
-#    rm -rf debian/$pkg/usr/share/doc/$pkg
-#fi
-#ln -sf $target debian/$pkg/usr/share/doc/$pkg
+[ -d debian/$pkg/usr/share/doc ] || mkdir -p debian/$pkg/usr/share/doc
+if [ -d debian/$pkg/usr/share/doc/$p -a ! -h debian/$pkg/usr/share/doc/$p ]
+then
+    echo "WARNING: removing doc directory  $pkg"
+    rm -rf debian/$pkg/usr/share/doc/$pkg
+fi
+ln -sf $target debian/$pkg/usr/share/doc/$pkg
