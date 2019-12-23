@@ -19,6 +19,15 @@ d_jitdbg	= debian/$(p_jitdbg)
 d_jitdoc	= debian/$(p_jitdoc)
 
 $(binary_stamp)-libgccjit: $(install_jit_stamp)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -47,6 +56,15 @@ $(binary_stamp)-libgccjit: $(install_jit_stamp)
 	touch $@
 
 $(binary_stamp)-libgccjitdev: $(install_jit_stamp)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -71,6 +89,15 @@ $(binary_stamp)-libgccjitdev: $(install_jit_stamp)
 	touch $@
 
 $(binary_stamp)-libgccjitdoc: $(install_jit_stamp)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp

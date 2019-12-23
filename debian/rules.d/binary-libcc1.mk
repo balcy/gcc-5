@@ -9,6 +9,15 @@ d_cc1	= debian/$(p_cc1)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libcc1: $(install_dependencies)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp

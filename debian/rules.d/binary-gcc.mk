@@ -80,6 +80,15 @@ d_tst	= debian/$(p_tst)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcc: $(install_dependencies)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -190,6 +199,15 @@ endif
 # ----------------------------------------------------------------------
 
 $(binary_stamp)-gcc-multi: $(install_dependencies)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -208,6 +226,15 @@ $(binary_stamp)-gcc-multi: $(install_dependencies)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcc-plugindev: $(install_dependencies)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -243,6 +270,15 @@ endif
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcc-locales: $(install_dependencies)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -264,6 +300,15 @@ $(binary_stamp)-gcc-locales: $(install_dependencies)
 # ----------------------------------------------------------------------
 
 $(binary_stamp)-testresults: $(install_dependencies)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -324,6 +369,15 @@ endif
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcc-doc: $(build_html_stamp) $(install_stamp)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp

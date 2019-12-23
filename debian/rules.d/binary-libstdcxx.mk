@@ -179,6 +179,15 @@ debian/README.libstdc++-baseline:
 # for the 32bit multilib build
 
 define __do_libstdcxx
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -226,6 +235,15 @@ define __do_libstdcxx
 endef
 
 define __do_libstdcxx_dbg
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -266,6 +284,15 @@ define __do_libstdcxx_dbg
 endef
 
 define __do_libstdcxx_dev
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -364,6 +391,15 @@ ifeq ($(with_check),yes)
   libcxxdev_deps += debian/README.libstdc++-baseline
 endif
 $(binary_stamp)-libstdcxx-dev: $(libcxxdev_deps)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -470,6 +506,15 @@ $(build_doxygen_stamp): $(build_stamp)
 	touch $@
 
 $(binary_stamp)-libstdcxx-doc: $(install_stamp) doxygen-docs
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp

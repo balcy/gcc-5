@@ -81,6 +81,15 @@ endif
 
 # ----------------------------------------------------------------------
 define __do_fortran
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -116,6 +125,15 @@ do_fortran = $(call __do_fortran,lib$(1)gfortran$(FORTRAN_SONAME),$(1))
 
 
 define __do_libgfortran_dev
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp

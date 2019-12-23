@@ -51,6 +51,15 @@ ifeq ($(with_lib64ssp),yes)
 endif
 
 $(binary_stamp)-libssp: $(install_stamp)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -72,6 +81,15 @@ $(binary_stamp)-libssp: $(install_stamp)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-lib64ssp: $(install_stamp)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -93,6 +111,15 @@ $(binary_stamp)-lib64ssp: $(install_stamp)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-lib32ssp: $(install_stamp)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -114,6 +141,15 @@ $(binary_stamp)-lib32ssp: $(install_stamp)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libn32ssp: $(install_stamp)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
@@ -135,6 +171,15 @@ $(binary_stamp)-libn32ssp: $(install_stamp)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libx32ssp: $(install_stamp)
+	# wait until install stamp exists
+	counter=0
+	while [ ! -f $(install_stamp) ]
+	do
+		counter=$(expr $counter + 1)
+		[ $counter -ge 20 ] && break
+		sleep 5
+	done
+	
 	dh_testdir
 	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
