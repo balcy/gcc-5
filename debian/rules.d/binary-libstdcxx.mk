@@ -181,13 +181,7 @@ debian/README.libstdc++-baseline:
 define __do_libstdcxx
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l)
@@ -235,13 +229,7 @@ endef
 define __do_libstdcxx_dbg
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_d)
@@ -282,13 +270,7 @@ endef
 define __do_libstdcxx_dev
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	mv $(d)/$(usr_lib$(2))/libstdc++.a $(d)/$(usr_lib$(2))/libstdc++fs.a $(d)/$(usr_lib$(2))/libsupc++.a \
@@ -387,13 +369,7 @@ endif
 $(binary_stamp)-libstdcxx-dev: $(libcxxdev_deps)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_dev) $(d_pic)
@@ -500,13 +476,7 @@ $(build_doxygen_stamp): $(build_stamp)
 $(binary_stamp)-libstdcxx-doc: $(install_stamp) doxygen-docs
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_libd)

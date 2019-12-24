@@ -82,13 +82,7 @@ d_tst	= debian/$(p_tst)
 $(binary_stamp)-gcc: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gcc)
@@ -199,13 +193,7 @@ endif
 $(binary_stamp)-gcc-multi: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gcc_m)
@@ -224,13 +212,7 @@ $(binary_stamp)-gcc-multi: $(install_dependencies)
 $(binary_stamp)-gcc-plugindev: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_pld)
@@ -266,13 +248,7 @@ endif
 $(binary_stamp)-gcc-locales: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_loc)
@@ -294,13 +270,7 @@ $(binary_stamp)-gcc-locales: $(install_dependencies)
 $(binary_stamp)-testresults: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_tst)
@@ -361,13 +331,7 @@ endif
 $(binary_stamp)-gcc-doc: $(build_html_stamp) $(install_stamp)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_doc)

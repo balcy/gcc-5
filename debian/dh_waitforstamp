@@ -1,0 +1,11 @@
+#! /bin/bash
+
+stamp=$1
+
+counter=0
+while [[ ! -f "$stamp" ]]
+do
+  ((counter++))
+  [[ $counter -ge 20 ]] && break
+  sleep $(shuf -i 5-15 -n 1)
+done

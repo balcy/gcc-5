@@ -90,13 +90,7 @@ dirs_libphobos = \
 $(binary_stamp)-gdc: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gdc)
@@ -147,13 +141,7 @@ endif
 $(binary_stamp)-gdc-multi: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gdc_m)
@@ -170,13 +158,7 @@ $(binary_stamp)-gdc-multi: $(install_stamp)
 $(binary_stamp)-libphobos: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_libphobos)
@@ -207,13 +189,7 @@ endif
 define __do_libphobos_dev
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l)

@@ -27,13 +27,7 @@ endif
 $(binary_stamp)-cpp: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cpp)
@@ -73,13 +67,7 @@ endif
 $(binary_stamp)-cpp-doc: $(build_html_stamp) $(install_stamp)
 	dh_testdir
 	dh_testroot
-	counter=0
-	while [ ! -f $(install_stamp) ]
-	do
-		counter=$(expr $counter + 1)
-		[ $counter -ge 20 ] && break
-		sleep $(shuf -i 5-15 -n 1)
-	done
+	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cppd)
