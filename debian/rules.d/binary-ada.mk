@@ -89,7 +89,8 @@ endif
 
 
 $(binary_stamp)-libgnat: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -97,9 +98,6 @@ $(binary_stamp)-libgnat: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	: # libgnat
@@ -249,7 +247,8 @@ endif
 	touch $@
 
 $(binary_stamp)-ada: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -257,9 +256,6 @@ $(binary_stamp)-ada: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 	: # $(p_gnat)
 	rm -rf $(d_gnat)
@@ -399,7 +395,8 @@ $(build_gnatdoc_stamp): $(build_stamp)
 	touch $@
 
 $(binary_stamp)-ada-doc: $(build_html_stamp) $(build_gnatdoc_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -407,9 +404,6 @@ $(binary_stamp)-ada-doc: $(build_html_stamp) $(build_gnatdoc_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gnatd)

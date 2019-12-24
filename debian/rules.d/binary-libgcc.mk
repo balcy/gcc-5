@@ -147,7 +147,8 @@ d_lsfgccdev	= debian/$(p_lsfgccdev)
 
 # __do_gcc_devels(flavour,package,todir,fromdir)
 define __do_gcc_devels
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -155,9 +156,6 @@ define __do_gcc_devels
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	test -n "$(2)"
@@ -279,7 +277,8 @@ endef
 
 
 define __do_libgcc
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -287,9 +286,6 @@ define __do_libgcc
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l) $(d_d)

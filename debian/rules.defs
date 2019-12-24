@@ -3,10 +3,10 @@
 
 NJOBS :=
 USE_CPUS := 1
-#ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
-#  USE_CPUS := $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
+ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
+  USE_CPUS := $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS := -j $(USE_CPUS)
-#endif
+endif
 
 # common vars
 SHELL		= /bin/bash -e	# brace expansion used in rules file

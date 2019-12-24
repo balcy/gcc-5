@@ -19,7 +19,8 @@ files_objc = \
 	$(gcc_lexec_dir)/cc1obj
 
 $(binary_stamp)-objc: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -27,9 +28,6 @@ $(binary_stamp)-objc: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_objc)
@@ -60,7 +58,8 @@ endif
 	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 $(binary_stamp)-objc-multi: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -68,9 +67,6 @@ $(binary_stamp)-objc-multi: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_objc_m)

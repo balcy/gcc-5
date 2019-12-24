@@ -103,7 +103,8 @@ endif
 
 # ----------------------------------------------------------------------
 define __do_gccgo
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -111,9 +112,6 @@ define __do_gccgo
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l) $(d_d)
@@ -296,7 +294,8 @@ endif
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gccgo-multi: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -304,9 +303,6 @@ $(binary_stamp)-gccgo-multi: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_go_m)
@@ -325,7 +321,8 @@ $(binary_stamp)-gccgo-multi: $(install_stamp)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-go-doc: $(build_html_stamp) $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -333,9 +330,6 @@ $(binary_stamp)-go-doc: $(build_html_stamp) $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_god)

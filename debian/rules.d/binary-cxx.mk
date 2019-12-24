@@ -25,7 +25,8 @@ d_cxx_m	= debian/$(p_cxx_m)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-cxx: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -33,9 +34,6 @@ $(binary_stamp)-cxx: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cxx)
@@ -81,7 +79,8 @@ endif
 	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 $(binary_stamp)-cxx-multi: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -89,9 +88,6 @@ $(binary_stamp)-cxx-multi: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cxx_m)

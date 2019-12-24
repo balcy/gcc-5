@@ -52,7 +52,8 @@ ifeq ($(with_objc_gc),yes)
 endif
 
 define __do_libobjc
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -60,9 +61,6 @@ define __do_libobjc
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l) $(d_d)
@@ -87,7 +85,8 @@ endef
 
 
 define __do_libobjc_dev
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -95,9 +94,6 @@ define __do_libobjc_dev
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l)

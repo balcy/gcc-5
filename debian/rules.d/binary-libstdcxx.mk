@@ -179,7 +179,8 @@ debian/README.libstdc++-baseline:
 # for the 32bit multilib build
 
 define __do_libstdcxx
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -187,9 +188,6 @@ define __do_libstdcxx
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l)
@@ -235,7 +233,8 @@ define __do_libstdcxx
 endef
 
 define __do_libstdcxx_dbg
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -243,9 +242,6 @@ define __do_libstdcxx_dbg
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_d)
@@ -284,7 +280,8 @@ define __do_libstdcxx_dbg
 endef
 
 define __do_libstdcxx_dev
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -292,9 +289,6 @@ define __do_libstdcxx_dev
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	mv $(d)/$(usr_lib$(2))/libstdc++.a $(d)/$(usr_lib$(2))/libstdc++fs.a $(d)/$(usr_lib$(2))/libsupc++.a \
@@ -391,7 +385,8 @@ ifeq ($(with_check),yes)
   libcxxdev_deps += debian/README.libstdc++-baseline
 endif
 $(binary_stamp)-libstdcxx-dev: $(libcxxdev_deps)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -399,9 +394,6 @@ $(binary_stamp)-libstdcxx-dev: $(libcxxdev_deps)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_dev) $(d_pic)
@@ -506,7 +498,8 @@ $(build_doxygen_stamp): $(build_stamp)
 	touch $@
 
 $(binary_stamp)-libstdcxx-doc: $(install_stamp) doxygen-docs
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -514,9 +507,6 @@ $(binary_stamp)-libstdcxx-doc: $(install_stamp) doxygen-docs
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_libd)

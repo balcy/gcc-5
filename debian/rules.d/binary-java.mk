@@ -271,7 +271,8 @@ $(binary_stamp)-jbase: $(install_dependencies)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcj: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -279,9 +280,6 @@ $(binary_stamp)-gcj: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gcj)
@@ -326,7 +324,8 @@ endif
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libgcjjar: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -334,9 +333,6 @@ $(binary_stamp)-libgcjjar: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	dh_installdirs -p$(p_jar) $(dirs_jar)
@@ -430,7 +426,8 @@ $(binary_stamp)-libgcjdoc: $(install_stamp) $(build_javadoc_stamp)
 #endif
 
 $(binary_stamp)-java: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -438,9 +435,6 @@ $(binary_stamp)-java: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	dh_installdirs -p$(p_jrehl)   $(dirs_jrehl)
@@ -598,7 +592,8 @@ endif
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcjjdk: $(build_html_stamp) $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -606,9 +601,6 @@ $(binary_stamp)-gcjjdk: $(build_html_stamp) $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_jdk)
@@ -682,7 +674,8 @@ endif
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libgcjdev: $(build_html_stamp) $(install_stamp) $(binary_stamp)-java
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -690,9 +683,6 @@ $(binary_stamp)-libgcjdev: $(build_html_stamp) $(install_stamp) $(binary_stamp)-
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	dh_installdirs -p$(p_jdev) $(dirs_jdev)
@@ -735,7 +725,8 @@ endif
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libgcjdbg: $(install_stamp) $(binary_stamp)-java $(binary_stamp)-libgcjdev $(binary_stamp)-gcjjre
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -743,9 +734,6 @@ $(binary_stamp)-libgcjdbg: $(install_stamp) $(binary_stamp)-java $(binary_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	debian/dh_doclink -p$(p_jdbg) $(p_jbase)
@@ -764,7 +752,8 @@ $(binary_stamp)-libgcjdbg: $(install_stamp) $(binary_stamp)-java $(binary_stamp)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcjjre: $(install_stamp) $(binary_stamp)-java
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -772,9 +761,6 @@ $(binary_stamp)-gcjjre: $(install_stamp) $(binary_stamp)-java
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	dh_installdirs -p$(p_jre) $(dirs_jre)

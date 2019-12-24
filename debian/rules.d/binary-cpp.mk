@@ -25,7 +25,8 @@ endif
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-cpp: $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -33,9 +34,6 @@ $(binary_stamp)-cpp: $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cpp)
@@ -73,7 +71,8 @@ endif
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-cpp-doc: $(build_html_stamp) $(install_stamp)
-	# wait until install stamp exists
+	dh_testdir
+	dh_testroot
 	counter=0
 	while [ ! -f $(install_stamp) ]
 	do
@@ -81,9 +80,6 @@ $(binary_stamp)-cpp-doc: $(build_html_stamp) $(install_stamp)
 		[ $counter -ge 20 ] && break
 		sleep 5
 	done
-	
-	dh_testdir
-	dh_testroot
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cppd)
