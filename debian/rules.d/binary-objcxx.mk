@@ -26,7 +26,7 @@ $(binary_stamp)-objcxx: $(install_stamp)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -61,7 +61,7 @@ $(binary_stamp)-objcxx-multi: $(install_stamp)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 	rm -rf $(d_objcx_m)

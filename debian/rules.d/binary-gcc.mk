@@ -87,7 +87,7 @@ $(binary_stamp)-gcc: $(install_dependencies)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -204,7 +204,7 @@ $(binary_stamp)-gcc-multi: $(install_dependencies)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -229,7 +229,7 @@ $(binary_stamp)-gcc-plugindev: $(install_dependencies)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -271,7 +271,7 @@ $(binary_stamp)-gcc-locales: $(install_dependencies)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -299,7 +299,7 @@ $(binary_stamp)-testresults: $(install_dependencies)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -366,7 +366,7 @@ $(binary_stamp)-gcc-doc: $(build_html_stamp) $(install_stamp)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 

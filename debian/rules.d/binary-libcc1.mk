@@ -16,7 +16,7 @@ $(binary_stamp)-libcc1: $(install_dependencies)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 

@@ -186,7 +186,7 @@ define __do_libstdcxx
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -240,7 +240,7 @@ define __do_libstdcxx_dbg
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -287,7 +287,7 @@ define __do_libstdcxx_dev
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -392,7 +392,7 @@ $(binary_stamp)-libstdcxx-dev: $(libcxxdev_deps)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -505,7 +505,7 @@ $(binary_stamp)-libstdcxx-doc: $(install_stamp) doxygen-docs
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 

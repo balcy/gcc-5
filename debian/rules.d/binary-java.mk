@@ -278,7 +278,7 @@ $(binary_stamp)-gcj: $(install_stamp)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -331,7 +331,7 @@ $(binary_stamp)-libgcjjar: $(install_stamp)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -433,7 +433,7 @@ $(binary_stamp)-java: $(install_stamp)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -599,7 +599,7 @@ $(binary_stamp)-gcjjdk: $(build_html_stamp) $(install_stamp)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -681,7 +681,7 @@ $(binary_stamp)-libgcjdev: $(build_html_stamp) $(install_stamp) $(binary_stamp)-
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -732,7 +732,7 @@ $(binary_stamp)-libgcjdbg: $(install_stamp) $(binary_stamp)-java $(binary_stamp)
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
@@ -759,7 +759,7 @@ $(binary_stamp)-gcjjre: $(install_stamp) $(binary_stamp)-java
 	do
 		counter=$(expr $counter + 1)
 		[ $counter -ge 20 ] && break
-		sleep 5
+		sleep $(shuf -i 5-15 -n 1)
 	done
 	mv $(install_stamp) $(install_stamp)-tmp
 
