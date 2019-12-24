@@ -91,8 +91,7 @@ endif
 $(binary_stamp)-libgnat: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	: # libgnat
 	rm -rf $(d_lgnat)
@@ -140,7 +139,8 @@ endif
 
 	echo $(p_lgnat) $(p_lgnat_dbg) >> debian/$(lib_binaries)
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 
 $(binary_stamp)-libgnatvsn: $(install_stamp)
@@ -243,8 +243,7 @@ endif
 $(binary_stamp)-ada: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 	: # $(p_gnat)
 	rm -rf $(d_gnat)
 	dh_installdirs -p$(p_gnat) $(dirs_gnat)
@@ -367,7 +366,8 @@ ifeq ($(with_gnatsjlj),yes)
 	echo $(p_gnatsjlj) >> debian/arch_binaries
 endif
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 
 $(build_gnatdoc_stamp): $(build_stamp)
@@ -385,8 +385,7 @@ $(build_gnatdoc_stamp): $(build_stamp)
 $(binary_stamp)-ada-doc: $(build_html_stamp) $(build_gnatdoc_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gnatd)
 	dh_installdirs -p$(p_gnatd) \
@@ -396,4 +395,5 @@ $(binary_stamp)-ada-doc: $(build_html_stamp) $(build_gnatdoc_stamp)
 	    html/gnat_ugn.html html/gnat_rm.html html/gnat-style.html
 	echo $(p_gnatd) >> debian/indep_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@

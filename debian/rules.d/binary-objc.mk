@@ -21,8 +21,7 @@ files_objc = \
 $(binary_stamp)-objc: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_objc)
 	dh_installdirs -p$(p_objc) $(dirs_objc)
@@ -49,13 +48,13 @@ endif
 	dh_shlibdeps -p$(p_objc)
 	echo $(p_objc) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 $(binary_stamp)-objc-multi: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_objc_m)
 	dh_installdirs -p$(p_objc_m) $(docdir)
@@ -66,4 +65,5 @@ $(binary_stamp)-objc-multi: $(install_stamp)
 	dh_shlibdeps -p$(p_objc_m)
 	echo $(p_objc_m) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@

@@ -21,8 +21,7 @@ d_jitdoc	= debian/$(p_jitdoc)
 $(binary_stamp)-libgccjit: $(install_jit_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_jitlib) $(d_jitdbg)
 	dh_installdirs -p$(p_jitlib) \
@@ -44,14 +43,13 @@ $(binary_stamp)-libgccjit: $(install_jit_stamp)
 	$(call cross_mangle_substvars,$(p_jitlib))
 	echo $(p_jitlib) $(p_jitdbg) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 	touch $@
 
 $(binary_stamp)-libgccjitdev: $(install_jit_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_jitdev)
 	dh_installdirs -p$(p_jitdev) \
@@ -69,14 +67,13 @@ $(binary_stamp)-libgccjitdev: $(install_jit_stamp)
 
 	echo $(p_jitdev) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 	touch $@
 
 $(binary_stamp)-libgccjitdoc: $(install_jit_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_jitdoc)
 	dh_installdirs -p$(p_jitdoc) \
@@ -88,5 +85,5 @@ $(binary_stamp)-libgccjitdoc: $(install_jit_stamp)
 	debian/dh_doclink -p$(p_jitdoc) $(p_base)
 	echo $(p_jitdoc) >> debian/indep_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 	touch $@

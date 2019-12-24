@@ -17,8 +17,7 @@ files_fix = \
 $(binary_stamp)-fixincl: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_fix)
 	dh_installdirs -p$(p_fix) $(dirs_fix)
@@ -40,4 +39,5 @@ $(binary_stamp)-fixincl: $(install_stamp)
 	dh_shlibdeps -p$(p_fix)
 	echo $(p_fix) >> debian/arch_binaries.epoch
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@

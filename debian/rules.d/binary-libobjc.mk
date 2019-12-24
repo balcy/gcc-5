@@ -54,8 +54,7 @@ endif
 define __do_libobjc
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l) $(d_d)
 	dh_installdirs -p$(p_l) \
@@ -74,7 +73,8 @@ define __do_libobjc
 	$(call cross_mangle_substvars,$(p_l))
 	echo $(p_l) $(p_d) >> debian/$(lib_binaries)
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 endef
 
 

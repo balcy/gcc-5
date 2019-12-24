@@ -53,8 +53,7 @@ endif
 $(binary_stamp)-libssp: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_ssp)
 	dh_installdirs -p$(p_ssp)
@@ -69,14 +68,14 @@ $(binary_stamp)-libssp: $(install_stamp)
 	dh_shlibdeps -p$(p_ssp)
 	echo $(p_ssp) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-lib64ssp: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_ssp64)
 	dh_installdirs -p$(p_ssp64) \
@@ -91,14 +90,14 @@ $(binary_stamp)-lib64ssp: $(install_stamp)
 #	dh_shlibdeps -p$(p_ssp64)
 	echo $(p_ssp64) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-lib32ssp: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_ssp32)
 	dh_installdirs -p$(p_ssp32) \
@@ -113,14 +112,14 @@ $(binary_stamp)-lib32ssp: $(install_stamp)
 #	dh_shlibdeps -p$(p_ssp32)
 	echo $(p_ssp32) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libn32ssp: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_sspn32)
 	dh_installdirs -p$(p_sspn32) \
@@ -135,14 +134,14 @@ $(binary_stamp)-libn32ssp: $(install_stamp)
 #	dh_shlibdeps -p$(p_sspn32)
 	echo $(p_sspn32) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libx32ssp: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_sspx32)
 	dh_installdirs -p$(p_sspx32) \
@@ -157,4 +156,5 @@ $(binary_stamp)-libx32ssp: $(install_stamp)
 #	dh_shlibdeps -p$(p_sspx32)
 	echo $(p_sspx32) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@

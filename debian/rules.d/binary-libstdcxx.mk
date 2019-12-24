@@ -181,8 +181,7 @@ debian/README.libstdc++-baseline:
 define __do_libstdcxx
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l)
 
@@ -223,14 +222,14 @@ define __do_libstdcxx
 	$(call cross_mangle_substvars,$(p_l))
 	echo $(p_l) >> debian/$(lib_binaries)
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 endef
 
 define __do_libstdcxx_dbg
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_d)
 	dh_installdirs -p$(p_d) \
@@ -264,14 +263,14 @@ define __do_libstdcxx_dbg
 	debian/dh_rmemptydirs -p$(p_d)
 	echo $(p_d) >> debian/$(lib_binaries)
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 endef
 
 define __do_libstdcxx_dev
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	mv $(d)/$(usr_lib$(2))/libstdc++.a $(d)/$(usr_lib$(2))/libstdc++fs.a $(d)/$(usr_lib$(2))/libsupc++.a \
 		$(d)/$(gcc_lib_dir$(2))/
@@ -293,7 +292,8 @@ define __do_libstdcxx_dev
 		$(call shlibdirs_to_search,$(subst stdc++$(CXX_SONAME),gcc$(GCC_SONAME),$(p_l)),$(2))
 	echo $(p_l) >> debian/$(lib_binaries)
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 endef
 
 do_libstdcxx = $(call __do_libstdcxx,lib$(1)stdc++$(CXX_SONAME),$(1))
@@ -369,8 +369,7 @@ endif
 $(binary_stamp)-libstdcxx-dev: $(libcxxdev_deps)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_dev) $(d_pic)
 	dh_installdirs -p$(p_dev) $(dirs_dev)
@@ -459,7 +458,8 @@ endif
 	$(call cross_mangle_substvars,$(p_dbg))
 	echo $(p_dev) $(p_pic) $(p_dbg) >> debian/$(lib_binaries)
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 
@@ -476,8 +476,7 @@ $(build_doxygen_stamp): $(build_stamp)
 $(binary_stamp)-libstdcxx-doc: $(install_stamp) doxygen-docs
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_libd)
 	dh_installdirs -p$(p_libd) \
@@ -529,4 +528,5 @@ $(binary_stamp)-libstdcxx-doc: $(install_stamp) doxygen-docs
 
 	echo $(p_libd) >> debian/indep_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@

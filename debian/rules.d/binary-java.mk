@@ -273,8 +273,7 @@ $(binary_stamp)-jbase: $(install_dependencies)
 $(binary_stamp)-gcj: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gcj)
 	dh_installdirs -p$(p_gcj)  $(dirs_gcj)
@@ -314,14 +313,14 @@ endif
 	dh_shlibdeps -p$(p_gcj) -Xecj1
 	echo $(p_gcj) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libgcjjar: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	dh_installdirs -p$(p_jar) $(dirs_jar)
 	$(dh_compat2) dh_movefiles -p$(p_jar) $(files_jar)
@@ -334,7 +333,8 @@ $(binary_stamp)-libgcjjar: $(install_stamp)
 	debian/dh_rmemptydirs -p$(p_jar)
 	echo $(p_jar) >> debian/indep_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(build_javasrc_stamp): $(build_stamp)
@@ -416,8 +416,7 @@ $(binary_stamp)-libgcjdoc: $(install_stamp) $(build_javadoc_stamp)
 $(binary_stamp)-java: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	dh_installdirs -p$(p_jrehl)   $(dirs_jrehl)
 	dh_installdirs -p$(p_jlib)  $(dirs_jlib)
@@ -570,14 +569,14 @@ endif
 
 	echo $(p_jrehl) $(p_jlib) $(p_jlibx) $(subst -p,,$(peer_pkgs)) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcjjdk: $(build_html_stamp) $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_jdk)
 	dh_installdirs -p$(p_jdk)  $(dirs_jdk)
@@ -646,14 +645,14 @@ endif
 	dh_shlibdeps -p$(p_jdk) -l$(d_lib)/$(PF)/$(libdir):$(d_jlib)/$(PF)/lib -Xecj1
 	echo $(p_jdk) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libgcjdev: $(build_html_stamp) $(install_stamp) $(binary_stamp)-java
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	dh_installdirs -p$(p_jdev) $(dirs_jdev)
 
@@ -691,14 +690,14 @@ else
 endif
 	echo $(p_jdev) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-libgcjdbg: $(install_stamp) $(binary_stamp)-java $(binary_stamp)-libgcjdev $(binary_stamp)-gcjjre
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	debian/dh_doclink -p$(p_jdbg) $(p_jbase)
 
@@ -712,14 +711,14 @@ $(binary_stamp)-libgcjdbg: $(install_stamp) $(binary_stamp)-java $(binary_stamp)
 #	  $(d_jdbg)/usr/lib/debug/$(gcj_vlibdir)/libgconfpeer.so.0
 	echo $(p_jdbg) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcjjre: $(install_stamp) $(binary_stamp)-java
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	dh_installdirs -p$(p_jre) $(dirs_jre)
 	$(dh_compat2) dh_movefiles -p$(p_jre)   $(files_jre)
@@ -728,4 +727,5 @@ $(binary_stamp)-gcjjre: $(install_stamp) $(binary_stamp)-java
 	DH_COMPAT=5 dh_strip -p$(p_jre) --dbg-package=$(p_jdbg)
 	echo $(p_jre) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@

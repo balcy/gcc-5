@@ -27,8 +27,7 @@ endif
 $(binary_stamp)-cpp: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cpp)
 	dh_installdirs -p$(p_cpp) $(dirs_cpp)
@@ -61,14 +60,14 @@ endif
 	dh_shlibdeps -p$(p_cpp)
 	echo $(p_cpp) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-cpp-doc: $(build_html_stamp) $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cppd)
 	dh_installdirs -p$(p_cppd) \
@@ -83,4 +82,5 @@ $(binary_stamp)-cpp-doc: $(build_html_stamp) $(install_stamp)
 	debian/dh_rmemptydirs -p$(p_cppd)
 	echo $(p_cppd) >> debian/indep_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@

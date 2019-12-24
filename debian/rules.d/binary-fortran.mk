@@ -83,8 +83,7 @@ endif
 define __do_fortran
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l) $(d_d)
 	dh_installdirs -p$(p_l) $(usr_lib$(2))
@@ -110,7 +109,8 @@ define __do_fortran
 	$(call cross_mangle_substvars,$(p_l))
 	echo $(p_l) $(p_d) >> debian/$(lib_binaries)
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 endef
 
 do_fortran = $(call __do_fortran,lib$(1)gfortran$(FORTRAN_SONAME),$(1))
@@ -119,8 +119,7 @@ do_fortran = $(call __do_fortran,lib$(1)gfortran$(FORTRAN_SONAME),$(1))
 define __do_libgfortran_dev
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l)
 	dh_installdirs -p$(1) $(gcc_lib_dir$(2))
@@ -138,7 +137,8 @@ define __do_libgfortran_dev
 	$(call cross_mangle_substvars,$(p_l))
 	echo $(p_l) >> debian/$(lib_binaries)
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 endef
 # ----------------------------------------------------------------------
 

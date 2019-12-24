@@ -26,8 +26,7 @@ endif
 $(binary_stamp)-nof: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	mv $(d)/$(usr_lib)/libgcc_s_nof.so.$(GCC_SONAME) $(d)/$(libgcc_dir)/.
 	rm -f $(d)/$(usr_lib)/libgcc_s_nof.so
@@ -49,4 +48,5 @@ $(binary_stamp)-nof: $(install_stamp)
 
 	echo $(p_nof) >> debian/arch_binaries
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@

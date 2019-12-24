@@ -149,8 +149,7 @@ d_lsfgccdev	= debian/$(p_lsfgccdev)
 define __do_gcc_devels
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	test -n "$(2)"
 	rm -rf debian/$(2)
@@ -167,7 +166,8 @@ define __do_gcc_devels
 	$(call cross_mangle_substvars,$(2))
 	echo $(2) >> debian/$(lib_binaries)
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 endef
 
 # __do_gcc_devels2(flavour,package,todir,fromdir)
@@ -273,8 +273,7 @@ endef
 define __do_libgcc
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
-	mv $(install_stamp) $(install_stamp)-tmp
+#	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l) $(d_d)
 
@@ -326,7 +325,8 @@ define __do_libgcc
 
 	echo $(p_l) $(p_d) >> debian/$(lib_binaries).epoch
 
-	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+	touch $@
 endef
 
 do_libgcc = $(call __do_libgcc,lib$(1)gcc$(GCC_SONAME),$(1),$(2))
