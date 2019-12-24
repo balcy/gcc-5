@@ -1,11 +1,17 @@
 #! /bin/bash
 
 stamp=$1
-
 counter=0
+
+upToOneSecond=$(bc -l <<< "scale=4 ; ${RANDOM}/32767")
+
+sleep $(shuf -i 1-30 -n 1)
+sleep $upToOneSecond
+
 while [[ ! -f "$stamp" ]]
 do
   ((counter++))
-  [[ $counter -ge 20 ]] && break
+  [[ $counter -ge 500 ]] && break
   sleep $(shuf -i 5-15 -n 1)
+  sleep $upToOneSecond
 done
