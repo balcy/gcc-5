@@ -11,7 +11,7 @@ d_cc1	= debian/$(p_cc1)
 $(binary_stamp)-libcc1: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cc1)
 	dh_installdirs -p$(p_cc1) \
@@ -28,5 +28,4 @@ $(binary_stamp)-libcc1: $(install_dependencies)
 	dh_shlibdeps -p$(p_cc1)
 	echo $(p_cc1) >> debian/arch_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)

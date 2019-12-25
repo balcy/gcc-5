@@ -91,7 +91,7 @@ endif
 $(binary_stamp)-libgnat: $(install_stamp)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	: # libgnat
 	rm -rf $(d_lgnat)
@@ -139,8 +139,7 @@ endif
 
 	echo $(p_lgnat) $(p_lgnat_dbg) >> debian/$(lib_binaries)
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 
 $(binary_stamp)-libgnatvsn: $(install_stamp)

@@ -82,7 +82,7 @@ d_tst	= debian/$(p_tst)
 $(binary_stamp)-gcc: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gcc)
 	dh_installdirs -p$(p_gcc) $(dirs_gcc)
@@ -185,15 +185,14 @@ endif
 	dh_shlibdeps -p$(p_gcc)
 	echo $(p_gcc) >> debian/arch_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 # ----------------------------------------------------------------------
 
 $(binary_stamp)-gcc-multi: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gcc_m)
 	dh_installdirs -p$(p_gcc_m) $(docdir)
@@ -205,14 +204,12 @@ $(binary_stamp)-gcc-multi: $(install_dependencies)
 	dh_shlibdeps -p$(p_gcc_m)
 	echo $(p_gcc_m) >> debian/arch_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcc-plugindev: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_pld)
@@ -242,14 +239,13 @@ endif
 	dh_shlibdeps -p$(p_pld)
 	echo $(p_pld) >> debian/arch_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcc-locales: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_loc)
 	dh_installdirs -p$(p_loc) \
@@ -262,8 +258,7 @@ $(binary_stamp)-gcc-locales: $(install_dependencies)
 	debian/dh_rmemptydirs -p$(p_loc)
 	echo $(p_loc) >> debian/indep_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 
 # ----------------------------------------------------------------------
@@ -271,7 +266,7 @@ $(binary_stamp)-gcc-locales: $(install_dependencies)
 $(binary_stamp)-testresults: $(install_dependencies)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_tst)
 	dh_installdirs -p$(p_tst) $(docdir)
@@ -325,14 +320,13 @@ endif
 
 	echo $(p_tst) >> debian/arch_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-gcc-doc: $(build_html_stamp) $(install_stamp)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_doc)
 	dh_installdirs -p$(p_doc) \
@@ -371,5 +365,4 @@ endif
 	debian/dh_rmemptydirs -p$(p_doc)
 	echo $(p_doc) >> debian/indep_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)

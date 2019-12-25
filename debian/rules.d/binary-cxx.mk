@@ -27,7 +27,7 @@ d_cxx_m	= debian/$(p_cxx_m)
 $(binary_stamp)-cxx: $(install_stamp)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cxx)
 	dh_installdirs -p$(p_cxx) $(dirs_cxx)
@@ -69,13 +69,12 @@ endif
 	dh_strip -p$(p_cxx) $(if $(unstripped_exe),-X/cc1plus)
 	echo $(p_cxx) >> debian/arch_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 $(binary_stamp)-cxx-multi: $(install_stamp)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_cxx_m)
 	dh_installdirs -p$(p_cxx_m) \
@@ -88,5 +87,4 @@ $(binary_stamp)-cxx-multi: $(install_stamp)
 	dh_shlibdeps -p$(p_cxx_m)
 	echo $(p_cxx_m) >> debian/arch_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)

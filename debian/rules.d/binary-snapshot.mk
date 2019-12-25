@@ -56,7 +56,7 @@ $(binary_stamp)-snapshot: $(install_snap_stamp) \
     $(if $(filter $(with_ecj),yes),$(stampdir)/ecj_binaries)
 	dh_testdir
 	dh_testroot
-#	mv $(install_snap_stamp) $(install_snap_stamp)-tmp
+	mv $(install_snap_stamp) $(install_snap_stamp)-tmp
 
 	rm -rf $(d_snap)
 	dh_installdirs -p$(p_snap) $(dirs_snap)
@@ -229,5 +229,5 @@ endif
 	dh_md5sums -p$(p_snap)
 	dh_builddeb -p$(p_snap)
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_snap_stamp)-tmp $(install_snap_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_snap_stamp)-tmp $(install_snap_stamp)
+

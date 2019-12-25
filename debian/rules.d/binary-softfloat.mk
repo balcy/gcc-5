@@ -15,7 +15,7 @@ files_softfloat = \
 $(binary_stamp)-softfloat: $(install_stamp)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_softfloat)
 	dh_installdirs -p$(p_softfloat) $(dirs_softfloat)
@@ -28,5 +28,5 @@ $(binary_stamp)-softfloat: $(install_stamp)
 	dh_shlibdeps -p$(p_softfloat)
 	echo $(p_softfloat) >> debian/arch_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
+

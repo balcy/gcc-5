@@ -90,7 +90,7 @@ dirs_libphobos = \
 $(binary_stamp)-gdc: $(install_stamp)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gdc)
 	dh_installdirs -p$(p_gdc) $(dirs_gdc)
@@ -135,8 +135,7 @@ endif
 
 	find $(d_gdc) -type d -empty -delete
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 $(binary_stamp)-gdc-multi: $(install_stamp)
 	dh_testdir
@@ -158,7 +157,7 @@ $(binary_stamp)-gdc-multi: $(install_stamp)
 $(binary_stamp)-libphobos: $(install_stamp)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_libphobos)
 	dh_installdirs -p$(p_libphobos) $(dirs_libphobos)
@@ -210,8 +209,7 @@ define __do_libphobos_dev
 		$(if $(filter yes,$(with_separate_gdc)),$(p_gdc),$(p_lbase))
 	echo $(p_l) >> debian/$(lib_binaries)
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 endef
 
 # don't put this as a comment within define/endef

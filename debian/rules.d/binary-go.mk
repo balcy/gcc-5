@@ -105,7 +105,7 @@ endif
 define __do_gccgo
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l) $(d_d)
 	dh_installdirs -p$(p_l) $(usr_lib$(2))
@@ -132,8 +132,7 @@ define __do_gccgo
 	$(call cross_mangle_substvars,$(p_l))
 	echo $(p_l) $(p_d) >> debian/$(lib_binaries)
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 endef
 
 do_gccgo = $(call __do_gccgo,lib$(1)go$(GO_SONAME),$(1))
@@ -290,7 +289,7 @@ endif
 $(binary_stamp)-gccgo-multi: $(install_stamp)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_go_m)
 	dh_installdirs -p$(p_go_m) $(docdir)
@@ -304,14 +303,13 @@ $(binary_stamp)-gccgo-multi: $(install_stamp)
 	dh_shlibdeps -p$(p_go_m)
 	echo $(p_go_m) >> debian/arch_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
 
 # ----------------------------------------------------------------------
 $(binary_stamp)-go-doc: $(build_html_stamp) $(install_stamp)
 	dh_testdir
 	dh_testroot
-#	mv $(install_stamp) $(install_stamp)-tmp
+	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_god)
 	dh_installdirs -p$(p_god) \
@@ -326,5 +324,4 @@ $(binary_stamp)-go-doc: $(build_html_stamp) $(install_stamp)
 	cp -p html/gccgo.html $(d_god)/$(docdir)/$(p_xbase)/go/
 	echo $(p_god) >> debian/indep_binaries
 
-#	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
-	touch $@
+	trap '' 1 2 3 15; touch $@; mv $(install_stamp)-tmp $(install_stamp)
