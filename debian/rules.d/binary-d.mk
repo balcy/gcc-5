@@ -140,7 +140,6 @@ endif
 $(binary_stamp)-gdc-multi: $(install_stamp)
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_gdc_m)
@@ -187,7 +186,6 @@ endif
 define __do_libphobos_dev
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l)

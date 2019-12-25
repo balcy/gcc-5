@@ -80,7 +80,6 @@ endef
 define __do_libobjc_dev
 	dh_testdir
 	dh_testroot
-	debian/dh_waitforstamp $(install_stamp)
 	mv $(install_stamp) $(install_stamp)-tmp
 
 	rm -rf $(d_l)
